@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properti Indah - Jual & Sewa Rumah</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* ======= RESET & FONT ======= */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: linear-gradient(180deg, #f0f4f8, #d9e8f5);
+        color: #333;
+        line-height: 1.6;
+        animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* ======= HEADER ======= */
+    header {
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+        font-size: 2em;
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav li {
+        margin-left: 30px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 5px 0;
+    }
+
+    nav a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 3px;
+        bottom: -5px;
+        left: 0;
+        background: linear-gradient(90deg, #ffecd2, #fcb69f);
+        transition: width 0.3s ease;
+        border-radius: 2px;
+    }
+
+    nav a:hover::after {
+        width: 100%;
+    }
+
+    nav a:hover {
+        color: #ffecd2;
+        transform: translateY(-2px);
+    }
+
+    /* ======= HERO SECTION ======= */
+    .hero {
+        position: relative;
+        text-align: center;
+        padding: 150px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        overflow: hidden;
+        animation: fadeSlide 1.2s ease-out;
+    }
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('https://source.unsplash.com/featured/?modern-house') no-repeat center center/cover;
+        opacity: 0.3;
+        z-index: -1;
+    }
+
+    @keyframes fadeSlide {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h2 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero p {
+        font-size: 1.3em;
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+
+    .btn {
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(255, 126, 95, 0.4);
+        display: inline-block;
+    }
+
+    .btn:hover {
+        background: linear-gradient(90deg, #feb47b, #ff7e5f);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(255, 126, 95, 0.6);
+    }
+
+    /* ======= WHY CHOOSE US ======= */
+    .why-choose {
+        padding: 80px 40px;
+        background: white;
+        text-align: center;
+    }
+
+    .why-choose h2 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    .why-choose h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 3px;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .feature {
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .feature h3 {
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+    }
+
+    /* ======= LISTING SECTION ======= */
+    .listing {
+        padding: 80px 40px;
+        background: linear-gradient(180deg, #f0f4f8, #d9e8f5);
+    }
+
+    .listing h2 {
+        text-align: center;
+        color: #333;
+        font-size: 2.5em;
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    .listing h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        border-radius: 3px;
+    }
+
+    .property-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .property-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        animation: fadeUp 1s ease forwards;
+        position: relative;
+    }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .property-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .property-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .property-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .property-card h3 {
+        color: #667eea;
+        margin: 20px;
+        font-size: 1.4em;
+        font-weight: 600;
+    }
+
+    .property-card p {
+        margin: 0 20px 10px;
+        font-size: 1em;
+        color: #555;
+    }
+
+    .btn-detail {
+        display: inline-block;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        margin: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-detail:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(102, 126, 234, 0.5);
+    }
+
+    /* ======= TESTIMONIALS ======= */
+    .testimonials {
+        padding: 80px 40px;
+        background: white;
+        text-align: center;
+    }
+
+    .testimonials h2 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 50px;
+    }
+
+    .testimonial-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .testimonial {
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .testimonial:hover {
+        transform: translateY(-5px);
+    }
+
+    .testimonial p {
+        font-style: italic;
+        margin-bottom: 15px;
+    }
+
+    .testimonial cite {
+        font-weight: 600;
+    }
+
+    /* ======= CONTACT ======= */
+    .contact {
+        padding: 80px 40px;
+        background: linear-gradient(180deg, #d9e8f5, #f0f4f8);
+        text-align: center;
+    }
+
+    .contact h2 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 50px;
+    }
+
+    .contact form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: grid;
+        gap: 20px;
+    }
+
+    .contact input, .contact textarea {
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        font-size: 1em;
+        transition: border-color 0.3s ease;
+    }
+
+    .contact input:focus, .contact textarea:focus {
+        border-color: #667eea;
+        outline: none;
+    }
+
+    .contact button {
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .contact button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+    }
+
+    /* ======= FOOTER ======= */
+    footer {
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+        text-align: center;
+        padding: 30px;
+        font-size: 1em;
+    }
+
+    footer p {
+        margin-bottom: 10px;
+    }
+
+    footer .social-links {
+        margin-top: 20px;
+    }
+
+    footer .social-links a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        font-size: 1.5em;
+        transition: color 0.3s ease;
+    }
+
+    footer .social-links a:hover {
+        color: #ffecd2;
+    }
+
+    /* ======= RESPONSIVE ======= */
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            text-align: center;
+            padding: 15px 20px;
+        }
+
+        nav ul {
+            margin-top: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 5px 15px;
+        }
+
+        .hero {
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.2em;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+        }
+
+        .features, .property-container, .testimonial-container {
+            grid-template-columns: 1fr;
+        }
+
+        .contact form {
+            padding: 0 20px;
+        }
+    }
+</style>
+</head>
+
+<body>
+<header>
+    <h1>Properti Indah</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#why">Mengapa Kami</a></li>
+            <li><a href="#listing">Listing</a></li>
+            <li><a href="#testimonials">Testimonial</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h2>Temukan Rumah Impian Anda Bersama Kami</h2>
+    <p>Jual, beli, dan sewa properti dengan mudah, cepat, dan terpercaya. Kami hadir untuk mewujudkan impian hunian Anda.</p>
+    <a href="#listing" class="btn">Lihat Listing</a>
+</section>
+
+<section id="why" class="why-choose">
+    <h2>Mengapa Memilih Properti Indah?</h2>
+    <div class="features">
+        <div class="feature">
+            <h3>Properti Berkualitas</h3>
+            <p>Kami menyediakan properti dengan standar tinggi, mulai dari rumah minimalis hingga villa mewah.</p>
+        </div>
+        <div class="feature">
+            <h3>Layanan Terpercaya</h3>
+            <p>Tim profesional kami siap membantu Anda dari awal hingga akhir proses transaksi.</p>
+        </div>
+        <div class="feature">
+            <h3>Harga Kompetitif</h3>
+            <p>Dapatkan properti impian dengan harga terbaik dan opsi pembayaran fleksibel.</p>
+        </div>
+    </div>
+</section>
+
+<section id="listing" class="listing">
+    <h2>Properti Terbaru</h2>
+    <div class="property-container">
+        <div class="property-card">
+            <img src="https://picsum.photos/400/250?random=2" alt="Rumah Minimalis di Semarang">
+            <h3>Rumah Minimalis di Semarang</h3>
+            <p>Harga: Rp 850.000.000</p>
+            <p>3 Kamar Tidur | 2 Kamar Mandi | 120 m²</p>
+            <a href="#" class="btn-detail">Detail</a>
+        </div>
+
+        <div class="property-card">
+            <img src="https://picsum.photos/400/250?random=3" alt="Apartemen Mewah di Jakarta">
+            <h3>Apartemen Mewah di Jakarta</h3>
+            <p>Harga: Rp 1.200.000.000</p>
+            <p>2 Kamar Tidur | 1 Kamar Mandi | 90 m²</p>
+            <a href="#" class="btn-detail">Detail</a>
+        </div>
+
+        <div class="property-card">
+            <img src="https://picsum.photos/400/250?random=4" alt="Villa Nyaman di Bali">
+            <h3>Villa Nyaman di Bali</h3>
+            <p>Harga: Rp 2.500.000.000</p>
+            <p>4 Kamar Tidur | 3 Kamar Mandi | 200 m²</p>
+            <a href="#" class="btn-detail">Detail</a>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="testimonials">
+    <h2>Apa Kata Klien Kami</h2>
+    <div class="testimonial-container">
+        <div class="testimonial">
+            <p>"Properti Indah membantu saya menemukan rumah impian dengan proses yang sangat mudah dan cepat. Terima kasih!"</p>
+            <cite>- Andi, Jakarta</cite>
+        </div>
+        <div class="testimonial">
+            <p>"Layanan mereka luar biasa. Apartemen yang saya beli sesuai dengan deskripsi dan harga sangat kompetitif."</p>
+            <cite>- Sari, Semarang</cite>
+        </div>
+        <div class="testimonial">
+            <p>"Rekomendasi villa di Bali sangat bagus. Timnya profesional dan responsif."</p>
+            <cite>- Budi, Bali</cite>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Hubungi Kami</h2>
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="Nama Anda" required>
+        <input type="email" name="email" placeholder="Email Anda" required>
+        <textarea name="message" rows="5" placeholder="Pesan Anda" required></textarea>
+        <button type="submit">Kirim
